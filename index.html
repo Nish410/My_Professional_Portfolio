@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nisha Saklani | Data Analyst & Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <script src="https://unpkg.com/particles.js@2.0.0/particles.min.js"></script>
+    <style>
+        /* Base Styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a192f;
+            color: #ccd6f6;
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: all 0.3s ease;
+        }
+        .accent-color {
+            color: #64ffda;
+        }
+        .bg-accent {
+            background-color: #64ffda;
+        }
+
+        /* Light Theme Styles */
+        html.light body {
+            background-color: #ffffff;
+            color: #2d3748;
+        }
+        html.light .text-gray-100 {
+            color: #1a202c !important;
+        }
+        html.light .text-gray-200 {
+            color: #2d3748 !important;
+        }
+        html.light .text-gray-300 {
+            color: #4a5568 !important;
+        }
+        html.light .text-gray-400 {
+            color: #718096 !important;
+        }
+        html.light .text-gray-500 {
+            color: #a0aec0 !important;
+        }
+        html.light .bg-gray-800 {
+            background-color: #f7fafc !important;
+            border-color: #e2e8f0 !important;
+        }
+        html.light .bg-gray-900 {
+            background-color: #edf2f7 !important;
+        }
+        html.light .border-gray-700 {
+            border-color: #e2e8f0 !important;
+        }
+        html.light .glass-effect {
+            background: rgba(255, 255, 255, 0.85) !important;
+            border: 1px solid rgba(226, 232, 240, 0.5) !important;
+        }
+        html.light #particles-js {
+            opacity: 0.3;
+        }
+        html.light .section-heading::before {
+            background: linear-gradient(to bottom, #4299e1, #e2e8f0) !important;
+        }
+        html.light .section-heading::after {
+            background: linear-gradient(90deg, #4299e1, transparent) !important;
+        }
+        html.light .accent-color {
+            color: #3182ce !important;
+        }
+        html.light .gradient-text {
+            background: linear-gradient(135deg, #3182ce, #4299e1, #3182ce) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+        }
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a192f;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
+        }
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 3px solid #233554;
+            border-top: 3px solid #64ffda;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        /* Particles Background */
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* Navigation Styles */
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #64ffda;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover {
+            background-color: rgba(100, 255, 218, 0.1);
+            transform: translateY(-2px);
+        }
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 4px;
+        }
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: #64ffda;
+            margin: 3px 0;
+            transition: 0.3s;
+            transform-origin: center;
+        }
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Glassmorphism Effect */
+        .glass-effect {
+            background: rgba(23, 39, 64, 0.85);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Enhanced Button Styles */
+        .btn-primary {
+            padding: 0.75rem 2rem;
+            border: 2px solid #64ffda;
+            color: #64ffda;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            background: transparent;
+            position: relative;
+            overflow: hidden;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .btn-primary:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.4), transparent);
+            transition: left 0.5s;
+        }
+        .btn-primary:hover:before {
+            left: 100%;
+        }
+        .btn-primary:hover {
+            background-color: rgba(100, 255, 218, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(100, 255, 218, 0.2);
+        }
+        
+        /* Section Heading Style */
+        .section-heading {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #ccd6f6;
+            margin-bottom: 4rem;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        .section-heading::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #64ffda, #233554);
+            border-radius: 2px;
+        }
+        .section-heading::after {
+            content: '';
+            display: block;
+            position: relative;
+            top: 2px;
+            width: 200px;
+            height: 2px;
+            margin-left: 2rem;
+            background: linear-gradient(90deg, #64ffda, transparent);
+        }
+
+        /* Card Hover Effects */
+        .card-hover {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .card-hover:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(100, 255, 218, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .card-hover:hover:before {
+            opacity: 1;
+        }
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Skill Progress Bars */
+        .skill-bar {
+            width: 100%;
+            height: 8px;
+            background-color: #233554;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #64ffda, #4fd1c7);
+            border-radius: 4px;
+            width: 0%;
+            transition: width 2s ease;
+            position: relative;
+        }
+        .skill-progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background-image: linear-gradient(
+                -45deg,
+                rgba(255, 255, 255, .2) 25%,
+                transparent 25%,
+                transparent 50%,
+                rgba(255, 255, 255, .2) 50%,
+                rgba(255, 255, 255, .2) 75%,
+                transparent 75%,
+                transparent
+            );
+            background-size: 50px 50px;
+            animation: move 2s linear infinite;
+        }
+
+        /* Floating Action Button */
+        .fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #64ffda, #4fd1c7);
+            color: #0a192f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(100, 255, 218, 0.3);
+        }
+        .fab:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 25px rgba(100, 255, 218, 0.4);
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            width: 60px;
+            height: 30px;
+            border-radius: 15px;
+            background: #233554;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid #64ffda;
+        }
+        .theme-toggle::before {
+            content: '🌙';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: #64ffda;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: #0a192f;
+        }
+        .theme-toggle.light {
+            background: #e2e8f0;
+            border-color: #3182ce;
+        }
+        .theme-toggle.light::before {
+            content: '☀️';
+            transform: translateX(28px);
+            background: #3182ce;
+            color: white;
+        }
+        html.light .theme-toggle {
+            background: #e2e8f0;
+            border-color: #3182ce;
+        }
+
+        /* Custom Animation Keyframes */
+        .animate-fade-in { animation: fadeIn 1s ease-in-out; }
+        .animate-slide-in { animation: slideIn 0.8s ease-out; }
+        .animate-slide-in-delay { animation: slideIn 0.8s 0.2s ease-out backwards; }
+        .animate-fade-in-delay { animation: fadeIn 1s 0.4s ease-in-out backwards; }
+        .animate-float { animation: float 3s ease-in-out infinite; }
+        .animate-pulse-glow { animation: pulseGlow 2s ease-in-out infinite; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideIn {
+            from { transform: translateX(-50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(100, 255, 218, 0.3); }
+            50% { box-shadow: 0 0 30px rgba(100, 255, 218, 0.6); }
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes move {
+            0% { background-position: 0 0; }
+            100% { background-position: 50px 50px; }
+        }
+
+        /* Text Effects */
+        .gradient-text {
+            background: linear-gradient(135deg, #64ffda, #4fd1c7, #64ffda);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease infinite;
+            background-size: 200% 200%;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .section-heading {
+                font-size: 2rem;
+            }
+            .section-heading::before {
+                display: none;
+            }
+            .fab {
+                bottom: 1rem;
+                right: 1rem;
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a192f;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #64ffda, #4fd1c7);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #4fd1c7, #64ffda);
+        }
+
+        /* Project Cards Enhancement */
+        .project-card {
+            transition: all 0.4s ease;
+            border-radius: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .project-card:hover {
+            background: rgba(100, 255, 218, 0.05);
+            border-color: rgba(100, 255, 218, 0.3);
+        }
+
+        /* Interactive Elements */
+        .interactive-element {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .interactive-element:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <!-- Header -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 glass-effect shadow-lg">
+        <nav class="container mx-auto px-6 lg:px-8 py-4 flex justify-between items-center">
+            <a href="#home" class="text-2xl font-bold gradient-text tracking-wider animate-pulse-glow">NS</a>
+            
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center space-x-8 text-sm">
+                <a href="#about" class="nav-link text-gray-300 hover:accent-color">About</a>
+                <a href="#projects" class="nav-link text-gray-300 hover:accent-color">Projects</a>
+                <a href="#skills" class="nav-link text-gray-300 hover:accent-color">Skills</a>
+                <a href="#experience" class="nav-link text-gray-300 hover:accent-color">Experience</a>
+                <a href="#contact" class="nav-link text-gray-300 hover:accent-color">Contact</a>
+            </div>
+
+            <!-- Desktop Social Links -->
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="https://github.com/Nish410" target="_blank" class="text-gray-300 hover:accent-color transition-all duration-300 transform hover:scale-110" aria-label="GitHub Profile">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                </a>
+                <a href="mailto:nsaklani.be22@thapar.edu" class="text-gray-300 hover:accent-color transition-all duration-300 transform hover:scale-110" aria-label="Email">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </a>
+                <div class="theme-toggle" id="theme-toggle"></div>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden flex items-center space-x-4">
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu md:hidden fixed top-0 right-0 h-full w-80 bg-gray-900 glass-effect shadow-2xl z-50">
+            <div class="p-8 space-y-8">
+                <div class="flex justify-between items-center">
+                    <span class="text-2xl font-bold gradient-text">Menu</span>
+                    <button id="close-menu" class="text-gray-300 hover:accent-color">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <nav class="space-y-6">
+                    <a href="#about" class="block text-xl text-gray-300 hover:accent-color transition-colors mobile-nav-link">About</a>
+                    <a href="#projects" class="block text-xl text-gray-300 hover:accent-color transition-colors mobile-nav-link">Projects</a>
+                    <a href="#skills" class="block text-xl text-gray-300 hover:accent-color transition-colors mobile-nav-link">Skills</a>
+                    <a href="#experience" class="block text-xl text-gray-300 hover:accent-color transition-colors mobile-nav-link">Experience</a>
+                    <a href="#contact" class="block text-xl text-gray-300 hover:accent-color transition-colors mobile-nav-link">Contact</a>
+                </nav>
+                <div class="flex items-center space-x-6 pt-8 border-t border-gray-700">
+                    <a href="https://github.com/Nish410" target="_blank" class="text-gray-300 hover:accent-color transition-all duration-300 transform hover:scale-110">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                    </a>
+                    <a href="mailto:nsaklani.be22@thapar.edu" class="text-gray-300 hover:accent-color transition-all duration-300 transform hover:scale-110">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    </a>
+                    <div class="theme-toggle" id="mobile-theme-toggle"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 lg:px-8">
+
+        <!-- Hero Section -->
+        <section id="home" class="min-h-screen flex items-center py-20 relative">
+            <div class="max-w-4xl relative z-10">
+                <p class="text-lg accent-color mb-4 animate-fade-in font-mono">Hi, my name is</p>
+                <h1 class="text-4xl sm:text-6xl md:text-7xl font-bold text-gray-100 animate-slide-in mb-4">Nisha Saklani.</h1>
+                <h2 class="text-3xl sm:text-5xl md:text-6xl font-bold text-gray-400 animate-slide-in-delay mb-6">
+                    I build <span id="typed-text" class="gradient-text"></span>
+                </h2>
+                <p class="mt-6 max-w-2xl text-lg text-gray-400 animate-fade-in-delay leading-relaxed">
+                    I'm an Electronics & Computer Engineering student with a passion for transforming raw data into compelling stories and actionable insights. 
+                    I enjoy building solutions that are both <span class="accent-color font-semibold">efficient</span> and <span class="accent-color font-semibold">impactful</span>.
+                </p>
+                <div class="mt-12 flex flex-wrap gap-6 animate-fade-in-delay">
+                    <a href="./files/Nisha_cv.pdf" download class="btn-primary interactive-element">
+                        Download CV
+                        <svg class="inline-block ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                    </a>
+                    <a href="#contact" class="btn-primary interactive-element">
+                        Get In Touch
+                        <svg class="inline-block ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                </div>
+                
+                <!-- Scroll Indicator -->
+                <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+                    <div class="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center">
+                        <div class="w-1 h-3 bg-accent rounded-full mt-2 animate-pulse"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Floating Elements -->
+            <div class="absolute top-20 right-20 w-20 h-20 bg-accent opacity-10 rounded-full animate-float hidden lg:block"></div>
+            <div class="absolute bottom-40 right-40 w-16 h-16 bg-blue-500 opacity-10 rounded-full animate-float animation-delay-1000 hidden lg:block"></div>
+            <div class="absolute top-40 left-20 w-12 h-12 bg-purple-500 opacity-10 rounded-full animate-float animation-delay-2000 hidden lg:block"></div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-32">
+            <h2 class="section-heading">About Me</h2>
+            <div class="grid md:grid-cols-5 gap-12 items-center">
+                <div class="md:col-span-3 text-gray-400 space-y-4 text-lg">
+                    <p>I’m a final-year B.Tech student at Thapar Institute of Engineering & Technology, specializing in Data Analytics. With strong hands-on experience in Python, R, and data visualization tools like Tableau, I’m passionate about transforming raw data into meaningful insights. I’ve earned the Google Data Analytics Professional Certificate, which further strengthened my skills in data wrangling, statistical analysis, and dashboard creation. Whether it's uncovering patterns, solving business problems, or creating compelling visual stories from data, I strive to bridge the gap between information and action.
+                       </p>
+                    <p>
+                        Here are a few technologies I've been working with recently:
+                    </p>
+                    <ul class="grid grid-cols-2 gap-x-4 gap-y-2 text-gray-300 font-mono text-sm">
+                        <li class="flex items-center"><span class="accent-color mr-3">▹</span>Python (Pandas, Numpy)</li>
+                        <li class="flex items-center"><span class="accent-color mr-3">▹</span>R (Tidyverse)</li>
+                        <li class="flex items-center"><span class="accent-color mr-3">▹</span>SQL & BigQuery</li>
+                        <li class="flex items-center"><span class="accent-color mr-3">▹</span>Tableau</li>
+                        <li class="flex items-center"><span class="accent-color mr-3">▹</span>JavaScript (ES6+)</li>
+                        <li class="flex items-center"><span class="accent-color mr-3">▹</span>C++ & DSA</li>
+                    </ul>
+                </div>
+                <div class="md:col-span-2 flex justify-center items-center">
+                    <div class="w-64 h-64 rounded-lg relative group">
+                        <div class="absolute inset-0 bg-teal-400/20 z-10 group-hover:bg-transparent transition-all duration-300 rounded-lg"></div>
+                        <div class="absolute top-4 left-4 w-full h-full border-2 border-teal-300 rounded-lg group-hover:top-2 group-hover:left-2 transition-all duration-300"></div>
+                       <img src="./images/profile.jpg" alt="Nisha Saklani" class="w-full h-full object-cover rounded-lg relative z-0 grayscale hover:grayscale-0 transition-all duration-300">
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Skills Section -->
+        <section id="skills" class="py-32">
+            <h2 class="section-heading">Skills & Technologies</h2>
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Technical Skills -->
+                <div class="space-y-8">
+                    <h3 class="text-2xl font-bold text-gray-200 mb-8 gradient-text">Technical Skills</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-300 font-semibold">Python (Pandas, NumPy)</span>
+                                <span class="text-accent font-mono text-sm">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="90"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-300 font-semibold">R (Tidyverse)</span>
+                                <span class="text-accent font-mono text-sm">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-300 font-semibold">SQL & BigQuery</span>
+                                <span class="text-accent font-mono text-sm">88%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="88"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-300 font-semibold">Tableau</span>
+                                <span class="text-accent font-mono text-sm">92%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="92"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-300 font-semibold">JavaScript</span>
+                                <span class="text-accent font-mono text-sm">75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="75"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-300 font-semibold">C++ & DSA</span>
+                                <span class="text-accent font-mono text-sm">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="80"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Soft Skills & Tools -->
+                <div class="space-y-8">
+                    <h3 class="text-2xl font-bold text-gray-200 mb-8 gradient-text">Tools & Platforms</h3>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="card-hover bg-gray-800 border border-gray-700 rounded-lg p-4 text-center">
+                            <div class="text-accent text-3xl mb-2">📊</div>
+                            <h4 class="text-gray-200 font-semibold">Data Visualization</h4>
+                            <p class="text-gray-400 text-sm">Tableau, Power BI</p>
+                        </div>
+                        
+                        <div class="card-hover bg-gray-800 border border-gray-700 rounded-lg p-4 text-center">
+                            <div class="text-accent text-3xl mb-2">🗄️</div>
+                            <h4 class="text-gray-200 font-semibold">Databases</h4>
+                            <p class="text-gray-400 text-sm">MySQL, SQLite, BigQuery</p>
+                        </div>
+                        
+                        <div class="card-hover bg-gray-800 border border-gray-700 rounded-lg p-4 text-center">
+                            <div class="text-accent text-3xl mb-2">☁️</div>
+                            <h4 class="text-gray-200 font-semibold">Cloud Platforms</h4>
+                            <p class="text-gray-400 text-sm">Google Cloud, AWS</p>
+                        </div>
+                        
+                        <div class="card-hover bg-gray-800 border border-gray-700 rounded-lg p-4 text-center">
+                            <div class="text-accent text-3xl mb-2">🔧</div>
+                            <h4 class="text-gray-200 font-semibold">Development</h4>
+                            <p class="text-gray-400 text-sm">Git, VS Code, Jupyter</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-8">
+                        <h4 class="text-xl font-semibold text-gray-200 mb-4">Core Competencies</h4>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="px-4 py-2 bg-accent bg-opacity-20 text-accent rounded-full text-sm font-semibold">Data Analysis</span>
+                            <span class="px-4 py-2 bg-accent bg-opacity-20 text-accent rounded-full text-sm font-semibold">Statistical Modeling</span>
+                            <span class="px-4 py-2 bg-accent bg-opacity-20 text-accent rounded-full text-sm font-semibold">Dashboard Creation</span>
+                            <span class="px-4 py-2 bg-accent bg-opacity-20 text-accent rounded-full text-sm font-semibold">Data Cleaning</span>
+                            <span class="px-4 py-2 bg-accent bg-opacity-20 text-accent rounded-full text-sm font-semibold">Business Intelligence</span>
+                            <span class="px-4 py-2 bg-accent bg-opacity-20 text-accent rounded-full text-sm font-semibold">Problem Solving</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+<section id="education" class="py-20 bg-[#0a0f1a] border-t border-gray-700">
+  <div class="container mx-auto px-6">
+    <h2 class="section-heading">Education</h2>
+
+    <div class="grid md:grid-cols-2 gap-10">
+      
+      <!-- College Card (Left Top) -->
+      <div class="card-hover bg-gray-800 rounded-xl border border-blue-500 shadow-xl overflow-hidden transition-transform">
+        <img src="./images/thapar.jpg" alt="Thapar University" class="w-full h-48 object-cover" />
+        <div class="p-6 space-y-3">
+          <h3 class="text-2xl font-bold text-white">Thapar Institute of Engineering and Technology</h3>
+          <p class="text-sm text-blue-300 font-semibold">Patiala, Punjab</p>
+          <p class="text-gray-300 text-lg">Bachelor of Engineering (B.E.) in Electronics and Computers</p>
+          <div class="flex items-center space-x-2 mt-2">
+            <span class="text-accent font-semibold">2022 - 2026</span>
+            <span class="text-gray-400">•</span>
+            <span class="text-gray-400">Final Year</span>
+          </div>
+          <ul class="list-disc list-inside text-gray-400 text-sm mt-3 space-y-1">
+            <li>Participated in national & college hackathons</li>
+            <li>Solved 300+ problems on LeetCode, GFG</li>
+            <li>Made dashboards for multiple business cases</li>
+            <li>Google Certified Data Analyst</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Spacer for staggered layout -->
+      <div class="hidden md:block"></div>
+
+      <!-- 12th Class Card (Right, Below) -->
+      <div class="card-hover bg-gray-800 rounded-xl border border-blue-500 shadow-xl overflow-hidden transition-transform md:col-start-2">
+        <img src="./images/dav.jpg" alt="DAV Public School" class="w-full h-48 object-cover" />
+        <div class="p-6 space-y-3">
+          <h3 class="text-2xl font-bold text-white">DAV Public School</h3>
+          <p class="text-sm text-blue-300 font-semibold">Dehradun, Uttarakhand</p>
+          <p class="text-gray-300 text-lg">Class 12th – CBSE</p>
+          <div class="flex items-center space-x-2 mt-2">
+            <span class="text-accent font-semibold">94%</span>
+            <span class="text-gray-400">•</span>
+            <span class="text-gray-400">2022</span>
+          </div>
+          <ul class="list-disc list-inside text-gray-400 text-sm mt-3 space-y-1">
+            <li>School Head Girl & House Captain</li>
+            <li>Top 5 academic performer</li>
+            <li>Core member – Science Club</li>
+            <li>Won 10+ inter-school debating competitions</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-32">
+            <h2 class="section-heading">My Projects</h2>
+            <div class="space-y-24">
+                <!-- Project 1 - Olist E-commerce Dashboard -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center project-card py-10 border-b border-gray-700">
+  <!-- Project Image -->
+  <div class="md:col-span-6 rounded-lg overflow-hidden shadow-lg transform hover:scale-[1.02] transition duration-300">
+    <a href="https://public.tableau.com/app/profile/nisha.saklani" target="_blank" class="block group">
+      <img src="./images/olist-dashboard.png" alt="Olist E-commerce Dashboard" class="w-full h-full object-cover rounded-xl group-hover:opacity-90 transition-opacity duration-300" onerror="this.src='https://placehold.co/600x400/112240/64ffda?text=E-commerce+Dashboard';">
+    </a>
+  </div>
+
+  <!-- Project Details -->
+  <div class="md:col-span-6 text-left space-y-5">
+    <p class="text-sm font-semibold text-blue-400 uppercase tracking-wide">Featured Project</p>
+    <h3 class="text-3xl font-bold text-white">Olist E-commerce Sales Dashboard</h3>
+
+    <p class="text-gray-300 leading-relaxed">
+      Conducted an in-depth analysis of over <strong>100K+ orders</strong> from the Brazilian Olist dataset. Cleaned and joined multi-table datasets using R and Tidyverse, then built an interactive Tableau dashboard revealing customer behavior, product trends, and regional sales performance.
+    </p>
+
+    <div class="bg-gray-800 border border-gray-700 rounded-lg p-4">
+      <p class="text-gray-400 text-sm mb-2">Key Highlights:</p>
+      <ul class="list-disc list-inside text-gray-300 text-sm space-y-1">
+        <li><strong>Tools Used:</strong> RStudio, Tidyverse, Tableau Public, GitHub</li>
+        <li><strong>Core KPIs:</strong> Sales by state, most profitable products, customer lifetime value</li>
+        <li><strong>Interactive Features:</strong> Filters by category & region, drill-downs on order performance</li>
+      </ul>
+    </div>
+
+    <p class="text-gray-300 italic">
+       This dashboard empowered business teams to optimize inventory, personalize marketing, and boost regional profitability.
+    </p>
+
+    <!-- Tech Tags -->
+    <div class="flex flex-wrap gap-2 text-sm text-gray-400 font-mono">
+      <span class="bg-gray-700 px-3 py-1 rounded-full">RStudio</span>
+      <span class="bg-gray-700 px-3 py-1 rounded-full">Tidyverse</span>
+      <span class="bg-gray-700 px-3 py-1 rounded-full">Tableau</span>
+      <span class="bg-gray-700 px-3 py-1 rounded-full">GitHub</span>
+    </div>
+
+    <!-- Links -->
+    <div class="flex items-center space-x-6 mt-4">
+      <a href="https://public.tableau.com/app/profile/nisha.saklani" target="_blank" class="text-blue-400 hover:underline flex items-center">
+        <i data-lucide="external-link" class="w-5 h-5 mr-2"></i> View Live Dashboard
+      </a>
+      <a href="https://github.com/Nish410/Customer_Sales_Dashboard" target="_blank" class="text-gray-400 hover:text-white transition-colors flex items-center">
+        <i data-lucide="github" class="w-5 h-5 mr-2"></i> GitHub Repo
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Project 2 - Delhi Transit Analysis -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center project-card py-10 border-b border-gray-700">
+  
+  <!-- Text Content -->
+  <div class="md:col-span-6 text-left space-y-5 animate-fade-in">
+    <p class="text-sm font-semibold text-blue-400 uppercase tracking-wide">Featured Project</p>
+    <h3 class="text-3xl font-bold text-white">Delhi Transit Analysis</h3>
+
+    <p class="text-gray-300 leading-relaxed">
+      Leveraged GTFS feed (bus routes & stops) to analyze and improve Delhi’s public transport network.
+      Parsed spatial and trip data using Python & SQLite, uncovering congestion patterns, low-coverage zones, and trip inefficiencies.
+    </p>
+
+    <div class="bg-gray-800 border border-gray-700 rounded-lg p-4">
+      <p class="text-gray-400 text-sm mb-2">Key Highlights:</p>
+      <ul class="list-disc list-inside text-gray-300 text-sm space-y-1">
+        <li><strong>Tools Used:</strong> Python, Pandas, SQLite3, Tableau Public</li>
+        <li><strong>Insights:</strong> Most crowded stops, route overlap, time-distance inefficiencies</li>
+        <li><strong>Dashboard Features:</strong> Heatmaps, filters, time sliders, route visualizations</li>
+      </ul>
+    </div>
+
+    <p class="text-gray-300 italic">
+       This dashboard supports planners in optimizing Delhi’s transit system for speed, accessibility, and coverage.
+    </p>
+
+    <!-- Tech Tags -->
+    <div class="flex flex-wrap gap-2 text-sm text-gray-400 font-mono">
+      <span class="bg-gray-700 px-3 py-1 rounded-full">Python</span>
+      <span class="bg-gray-700 px-3 py-1 rounded-full">Pandas</span>
+      <span class="bg-gray-700 px-3 py-1 rounded-full">SQLite</span>
+      <span class="bg-gray-700 px-3 py-1 rounded-full">Tableau</span>
+    </div>
+
+    <!-- Links -->
+    <div class="flex items-center space-x-6 mt-4">
+      <a href="https://public.tableau.com/views/DelhiTransitAnalysisDashboard/PublicTransitOptimisationDashboard?:showVizHome=no&:embed=true" target="_blank" class="text-blue-400 hover:underline flex items-center">
+        <i data-lucide="external-link" class="w-5 h-5 mr-2"></i> View Live Dashboard
+      </a>
+      <a href="https://github.com/Nish410/Delhi-Transit-Analysis-Dashboard" target="_blank" class="text-gray-400 hover:text-white transition-colors flex items-center">
+        <i data-lucide="github" class="w-5 h-5 mr-2"></i> GitHub Repo
+      </a>
+    </div>
+  </div>
+
+  <!-- Image Preview (clickable) -->
+  <div class="md:col-span-6 rounded-lg overflow-hidden shadow-xl transform hover:scale-[1.02] transition duration-300 animate-slide-in">
+    <a href="https://public.tableau.com/views/DelhiTransitAnalysisDashboard/PublicTransitOptimisationDashboard?:showVizHome=no&:embed=true" target="_blank" class="block group">
+      <img src="./images/transit-dashboard.png" alt="Delhi Transit Dashboard Preview" class="w-full h-full object-cover rounded-xl group-hover:opacity-90 transition-opacity duration-300" onerror="this.src='https://placehold.co/600x400/112240/64ffda?text=Transit+Dashboard';">
+    </a>
+  </div>
+</div>
+  <!-- Skills Section -->
+       
+<section id="certified-skills" class="py-16 bg-black text-white">
+  <div class="container mx-auto px-4">
+    <h2 class="text-4xl font-bold text-blue-400 mb-10 text-center">Certified Skills</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+
+      <!-- Foundations of Data -->
+      <div class="bg-gray-900 border border-blue-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition">
+        <i data-lucide="layers" class="w-8 h-8 text-blue-400 mb-4"></i>
+        <h3 class="text-xl font-semibold text-white mb-1">Foundations of Data</h3>
+        <p class="text-gray-400 text-sm italic mb-1">Tools: Google Sheets, SQL, Kaggle</p>
+        <p class="text-gray-400 mb-3">
+          Developed a solid grasp of data structures, ecosystems, and the complete data life cycle. 
+          Gained awareness of industry-standard tools and real-world analytical use cases.
+        </p>
+        <a href="https://coursera.org/verify/TZO666IN0WFA" target="_blank" class="text-blue-400 hover:text-blue-300">View Certificate</a>
+      </div>
+
+      <!-- Data-Driven Decision Making -->
+      <div class="bg-gray-900 border border-blue-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition">
+        <i data-lucide="help-circle" class="w-8 h-8 text-blue-400 mb-4"></i>
+        <h3 class="text-xl font-semibold text-white mb-1">Decision Support via Data</h3>
+        <p class="text-gray-400 text-sm italic mb-1">Tools: Business Cases, Flowcharts, Stakeholder Analysis</p>
+        <p class="text-gray-400 mb-3">
+          Learned how to translate vague problems into measurable data objectives. 
+          Built frameworks to guide critical thinking and align analytics with business impact.
+        </p>
+        <a href="https://coursera.org/verify/CKDHGLJOS2ER" target="_blank" class="text-blue-400 hover:text-blue-300">View Certificate</a>
+      </div>
+
+      <!-- Data Preparation -->
+      <div class="bg-gray-900 border border-blue-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition">
+        <i data-lucide="file-search" class="w-8 h-8 text-blue-400 mb-4"></i>
+        <h3 class="text-xl font-semibold text-white mb-1">Data Exploration Setup</h3>
+        <p class="text-gray-400 text-sm italic mb-1">Tools: BigQuery, Google Sheets, CSV Handling</p>
+        <p class="text-gray-400 mb-3">
+          Collected, documented, and formatted raw datasets from diverse sources. 
+          Ensured readiness for analysis by handling data structure, bias, and collection ethics.
+        </p>
+        <a href="https://coursera.org/verify/O0Z7IO6MG7ZB" target="_blank" class="text-blue-400 hover:text-blue-300">View Certificate</a>
+      </div>
+
+      <!-- Data Cleaning -->
+      <div class="bg-gray-900 border border-blue-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition">
+        <i data-lucide="wand" class="w-8 h-8 text-blue-400 mb-4"></i>
+        <h3 class="text-xl font-semibold text-white mb-1">Cleaning & Quality Control</h3>
+        <p class="text-gray-400 text-sm italic mb-1">Tools: SQL, Regex, Python (Pandas)</p>
+        <p class="text-gray-400 mb-3">
+          Cleaned noisy, inconsistent data using filters, conditions, and automation. 
+          Applied logic checks and error validation to maintain dataset integrity before modeling.
+        </p>
+        <a href="https://coursera.org/verify/IB5EMEPZ7CBC" target="_blank" class="text-blue-400 hover:text-blue-300">View Certificate</a>
+      </div>
+
+      <!-- Data Analysis -->
+      <div class="bg-gray-900 border border-blue-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition">
+        <i data-lucide="bar-chart-2" class="w-8 h-8 text-blue-400 mb-4"></i>
+        <h3 class="text-xl font-semibold text-white mb-1">Exploratory Data Analysis</h3>
+        <p class="text-gray-400 text-sm italic mb-1">Tools: Python, R, Tableau, NumPy</p>
+        <p class="text-gray-400 mb-3">
+          Applied statistical techniques to uncover trends, outliers, and relationships in data. 
+          Created data stories through graphs, aggregations, and exploratory queries using real-world datasets.
+        </p>
+        <a href="https://coursera.org/verify/LF9A3DI36ES7" target="_blank" class="text-blue-400 hover:text-blue-300">View Certificate</a>
+      </div>
+
+      <!-- R Programming -->
+<div class="bg-gray-900 border border-blue-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition">
+  <i data-lucide="code" class="w-8 h-8 text-blue-400 mb-4"></i>
+  <h3 class="text-xl font-semibold text-white mb-1">R Programming</h3>
+  <p class="text-gray-400 text-sm italic mb-1">Tools: R, RStudio, ggplot2, dplyr, tidyverse</p>
+  <p class="text-gray-400 mb-3">
+    Built a strong command over R syntax, data frames, and statistical programming logic. 
+    Used powerful libraries like `tidyverse`, `ggplot2`, and `dplyr` within RStudio for data wrangling, exploration, and visualization.
+  </p>
+  <!-- Add your R cert link if available -->
+  <a href="https://www.coursera.org/account/accomplishments/verify/4VFBM9V1WF0L" target="_blank" class="text-blue-400 hover:text-blue-300">View Certificate</a>
+</div>
+
+<!-- Data Visualization with Tableau -->
+<div class="bg-gray-900 border border-blue-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition">
+  <i data-lucide="layout-dashboard" class="w-8 h-8 text-blue-400 mb-4"></i>
+  <h3 class="text-xl font-semibold text-white mb-1">Data Visualization</h3>
+  <p class="text-gray-400 text-sm italic mb-1">Tools: Tableau Public, Dashboards, Filters, Drill-downs</p>
+  <p class="text-gray-400 mb-3">
+    Designed interactive dashboards using Tableau Public to communicate insights effectively. 
+    Created visual narratives using filters, calculated fields, and real-time drill-downs to support data-driven decisions.
+  </p>
+  <!-- Add your Tableau cert link if available -->
+  <a href="https://www.coursera.org/account/accomplishments/verify/R8ABC8SI49J1" target="_blank" class="text-blue-400 hover:text-blue-300">View Certificate</a>
+</div>
+    </div>
+  </div>
+</section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-32">
+            <h2 class="section-heading">Volunteer Experience</h2>
+            <div class="max-w-3xl mx-auto">
+                <div class="relative border-l-2 border-gray-700">
+                    <!-- Item 1 -->
+                    <div class="mb-12 ml-8">
+                        <span class="absolute flex items-center justify-center w-8 h-8 bg-teal-900 rounded-full -left-4 ring-8 ring-gray-900">
+                            <svg class="w-4 h-4 text-teal-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
+                        </span>
+                        <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-100">Executive Committee Member, Saturnalia <span class="bg-teal-900 text-teal-300 text-sm font-medium mr-2 px-2.5 py-0.5 rounded ml-3">Nov 2024</span></h3>
+                        <p class="text-gray-400">Managed logistics for 10,000+ attendees and spearheaded planning for the Fashion Walk event, coordinating over 100 team members in a high-pressure environment.</p>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="ml-8">
+                         <span class="absolute flex items-center justify-center w-8 h-8 bg-teal-900 rounded-full -left-4 ring-8 ring-gray-900">
+                            <svg class="w-4 h-4 text-teal-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
+                        </span>
+                        <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-100">Core Member, Urja Sports Fest <span class="bg-teal-900 text-teal-300 text-sm font-medium mr-2 px-2.5 py-0.5 rounded ml-3">Apr 2024</span></h3>
+                        <p class="text-gray-400">Managed disciplinary protocols for 500+ participants and contributed to the creative conceptualization and execution of pre-events, fostering a positive environment.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-32 text-center">
+            <h2 class="text-2xl font-semibold text-gray-300 font-mono">04. What's Next?</h2>
+            <h3 class="text-4xl md:text-5xl font-bold text-gray-100 mt-4 mb-6">Get In Touch</h3>
+            <p class="max-w-xl mx-auto text-gray-400 mb-10">
+                I'm actively seeking new opportunities in data analytics and Business Analyst. Whether you have a project in mind, a question, or just want to connect, my inbox is always open. I'll get back to you!
+            </p>
+            <a href="mailto:nsaklani.be22@thapar.edu" class="btn-primary inline-block">Say Hello</a>
+        </section>
+    </main>
+
+    <!-- Floating Action Button (Scroll to Top) -->
+    <div id="scroll-to-top" class="fab hidden">
+        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-12 text-center text-gray-500 border-t border-gray-700">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col items-center space-y-6">
+                <div class="flex space-x-6 mb-6">
+                    <a href="https://github.com/Nish410" target="_blank" class="text-gray-400 hover:accent-color transition-all duration-300 transform hover:scale-110">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                    </a>
+                    <a href="mailto:nsaklani.be22@thapar.edu" class="text-gray-400 hover:accent-color transition-all duration-300 transform hover:scale-110">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    </a>
+                    <a href="https://public.tableau.com/app/profile/nisha.saklani" target="_blank" class="text-gray-400 hover:accent-color transition-all duration-300 transform hover:scale-110">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="9" cy="9" r="2"></circle><path d="M21 15.5c-2.5 0-5-1.5-5-3.5s2.5-3.5 5-3.5"></path></svg>
+                    </a>
+                </div>
+                <div class="text-sm">
+                    <p class="gradient-text font-semibold">Designed & Built by Nisha Saklani</p>
+                    <p class="text-gray-400 mt-2">© 2025 All rights reserved</p>
+                </div>
+                <div class="text-xs text-gray-500 font-mono">
+                    Made with ❤️ using HTML, CSS & JavaScript
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Loading Screen
+        window.addEventListener('load', function() {
+            const loadingScreen = document.getElementById('loading-screen');
+            setTimeout(() => {
+                loadingScreen.style.opacity = '0';
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                }, 500);
+            }, 1500);
+        });
+
+        // Initialize Particles.js
+        if (window.particlesJS) {
+            const isDarkTheme = !document.documentElement.classList.contains('light');
+            const particleColor = isDarkTheme ? '#64ffda' : '#3182ce';
+            
+            particlesJS('particles-js', {
+                particles: {
+                    number: {
+                        value: 50,
+                        density: { enable: true, value_area: 800 }
+                    },
+                    color: { value: particleColor },
+                    shape: {
+                        type: 'circle',
+                        stroke: { width: 0, color: '#000000' }
+                    },
+                    opacity: {
+                        value: isDarkTheme ? 0.1 : 0.05,
+                        random: false
+                    },
+                    size: {
+                        value: 3,
+                        random: true
+                    },
+                    line_linked: {
+                        enable: true,
+                        distance: 150,
+                        color: particleColor,
+                        opacity: isDarkTheme ? 0.1 : 0.05,
+                        width: 1
+                    },
+                    move: {
+                        enable: true,
+                        speed: 2,
+                        direction: 'none',
+                        random: false,
+                        straight: false,
+                        out_mode: 'out',
+                        bounce: false
+                    }
+                },
+                interactivity: {
+                    detect_on: 'canvas',
+                    events: {
+                        onhover: { enable: true, mode: 'repulse' },
+                        onclick: { enable: true, mode: 'push' },
+                        resize: true
+                    }
+                },
+                retina_detect: true
+            });
+        }
+
+        // Typed.js for Hero Text
+        if (typeof Typed !== 'undefined') {
+            var typed = new Typed('#typed-text', {
+                strings: ['things with data.', 'animated dashboards.', 'meaningful insights.', 'data-driven solutions.'],
+                typeSpeed: 100,
+                backSpeed: 60,
+                backDelay: 2000,
+                loop: true,
+                showCursor: true,
+                cursorChar: '|'
+            });
+        }
+
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMenu = document.getElementById('close-menu');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        function toggleMobileMenu() {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : 'auto';
+        }
+
+        hamburger.addEventListener('click', toggleMobileMenu);
+        closeMenu.addEventListener('click', toggleMobileMenu);
+
+        // Close mobile menu when clicking nav links
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', toggleMobileMenu);
+        });
+
+        // Close mobile menu when clicking outside
+        mobileMenu.addEventListener('click', function(e) {
+            if (e.target === mobileMenu) {
+                toggleMobileMenu();
+            }
+        });
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+        let isDarkMode = localStorage.getItem('theme') !== 'light';
+
+        function toggleTheme() {
+            isDarkMode = !isDarkMode;
+            const htmlElement = document.documentElement;
+            
+            if (isDarkMode) {
+                htmlElement.classList.remove('light');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                htmlElement.classList.add('light');
+                localStorage.setItem('theme', 'light');
+            }
+            
+            // Update toggle button appearance
+            [themeToggle, mobileThemeToggle].forEach(toggle => {
+                if (toggle) {
+                    if (isDarkMode) {
+                        toggle.classList.remove('light');
+                    } else {
+                        toggle.classList.add('light');
+                    }
+                }
+            });
+            
+            // Update particles if they exist
+            if (window.pJSDom && window.pJSDom[0] && window.pJSDom[0].pJS) {
+                const particles = window.pJSDom[0].pJS.particles;
+                if (particles && particles.color) {
+                    particles.color.value = isDarkMode ? '#64ffda' : '#3182ce';
+                    particles.line_linked.color = isDarkMode ? '#64ffda' : '#3182ce';
+                }
+            }
+        }
+
+        // Initialize theme
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                isDarkMode = false;
+                document.documentElement.classList.add('light');
+                [themeToggle, mobileThemeToggle].forEach(toggle => {
+                    if (toggle) toggle.classList.add('light');
+                });
+            }
+        }
+
+        // Add event listeners
+        if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+        if (mobileThemeToggle) mobileThemeToggle.addEventListener('click', toggleTheme);
+
+        // Initialize theme on page load
+        initTheme();
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll to Top Button
+        const scrollToTopBtn = document.getElementById('scroll-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.remove('hidden');
+            } else {
+                scrollToTopBtn.classList.add('hidden');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Header background on scroll
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(10, 25, 47, 0.95)';
+                header.style.backdropFilter = 'blur(20px)';
+            } else {
+                header.style.background = 'rgba(23, 39, 64, 0.85)';
+                header.style.backdropFilter = 'blur(15px)';
+            }
+        });
+
+        // Active navigation highlighting
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Skill Progress Animation
+        const skillBars = document.querySelectorAll('.skill-progress');
+        const skillsSection = document.getElementById('skills');
+
+        const animateSkills = () => {
+            const skillsRect = skillsSection.getBoundingClientRect();
+            const isVisible = skillsRect.top < window.innerHeight && skillsRect.bottom > 0;
+            
+            if (isVisible) {
+                skillBars.forEach(bar => {
+                    const width = bar.getAttribute('data-width');
+                    bar.style.width = width + '%';
+                });
+                // Remove listener after animation
+                window.removeEventListener('scroll', animateSkills);
+            }
+        };
+
+        if (skillsSection) {
+            window.addEventListener('scroll', animateSkills);
+        }
+
+        // Project Card Interactions
+        const projectCards = document.querySelectorAll('.project-card');
+        projectCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+                this.style.boxShadow = '0 20px 40px rgba(100, 255, 218, 0.1)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = 'none';
+            });
+        });
+
+        // Interactive Elements
+        const interactiveElements = document.querySelectorAll('.interactive-element');
+        interactiveElements.forEach(element => {
+            element.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05) translateY(-2px)';
+            });
+            
+            element.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1) translateY(0)';
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.card-hover, .skill-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Parallax effect for floating elements
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.animate-float');
+            
+            parallaxElements.forEach((element, index) => {
+                const speed = 0.5 + (index * 0.1);
+                const yPos = -(scrolled * speed);
+                element.style.transform = `translate3d(0, ${yPos}px, 0)`;
+            });
+        });
+
+        // Copy email functionality
+        function copyEmail() {
+            const email = 'nsaklani.be22@thapar.edu';
+            navigator.clipboard.writeText(email).then(() => {
+                // Show toast notification
+                showToast('Email copied to clipboard!');
+            });
+        }
+
+        // Toast notification
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'fixed bottom-24 right-8 bg-accent text-gray-900 px-6 py-3 rounded-lg font-semibold z-50 transform translate-y-full transition-transform duration-300';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.transform = 'translateY(0)';
+            }, 100);
+            
+            setTimeout(() => {
+                toast.style.transform = 'translateY(full)';
+                setTimeout(() => {
+                    document.body.removeChild(toast);
+                }, 300);
+            }, 3000);
+        }
+
+        // Add click handlers for email links
+        document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                copyEmail();
+                // Also open email client
+                setTimeout(() => {
+                    window.location.href = link.href;
+                }, 1000);
+            });
+        });
+
+        // Preload critical images
+        const criticalImages = [
+            './images/profile.jpg',
+            './images/thapar.jpg',
+            './images/dav.jpg'
+        ];
+
+        criticalImages.forEach(src => {
+            const img = new Image();
+            img.src = src;
+        });
+
+        // Performance optimization: Lazy load non-critical images
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.classList.remove('lazy');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+
+        console.log('🚀 Welcome to Nisha Saklani\'s Portfolio!');
+        console.log('💼 Interested in working together? Let\'s connect!');
+        console.log('📧 Email: nsaklani.be22@thapar.edu');
+    </script>
+</body>
+</html>
