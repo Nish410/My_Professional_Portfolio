@@ -62,7 +62,7 @@ My portfolio is deployed using GitHub Pages and can be accessed directly:
 
 To explore the code locally:
 
-1.  Clone the repository:**
+1.  Clone the repository:
     ```bash
     git clone [https://github.com/Nish410/Nish410.github.io.git](https://github.com/Nish410/Nish410.github.io.git)
     ```
