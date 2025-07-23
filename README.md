@@ -64,11 +64,11 @@ To explore the code locally:
 
 1.  Clone the repository:
     ```bash
-    git clone [https://github.com/Nish410/Nish410.github.io.git](https://github.com/Nish410/Nish410.github.io.git)
+    git clone https://github.com/Nish410/My_Professional_Portfolio.git
     ```
 2.  Navigate to the project directory:
     ```bash
-    cd Nish410.github.io
+    cd Nish410.My_Professional_Portfolio
     ```
 3.  Open `index.html`:
     Simply open the `index.html` file in your preferred web browser to view the portfolio.
