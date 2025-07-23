@@ -2,7 +2,7 @@
 
 # Overview
 
-Welcome to my personal portfolio website! This repository contains the complete source code for my interactive online resume, showcasing my skills, projects, and professional journey as a **Data Analyst and aspiring Developer**.
+Welcome to my personal portfolio website! This repository contains the complete source code for my interactive online resume, showcasing my skills, projects, and professional journey as a **Data Analyst and aspiring Developer.
 
 My passion lies in transforming complex datasets into clear, actionable insights and compelling narratives. I thrive on building efficient and impactful solutions that drive informed decision-making and unlock business potential.
 
@@ -58,7 +58,7 @@ My core competencies include:
 
 My portfolio is deployed using GitHub Pages and can be accessed directly:
 
-* Live Website: [https://Nish410.github.io/]
+* Live Website: [https://nish410.github.io/My_Professional_Portfolio/]
 
 To explore the code locally:
 
